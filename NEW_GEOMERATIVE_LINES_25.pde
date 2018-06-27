@@ -189,24 +189,3 @@ void initGrid() {
     }
   }
 }
-//---------------------------TIMER--------------------------------------------------------
-
-
-
-void timer() {
-  AudioPlayer s = sounds[0][4];  
-  int stanzaDuration = s.length();
-  println("s length"+":"+s);
-  if (millis()>millis()-startTime + stanzaDuration) {
-    isInPause = true;
-    s.pause();
-  }
-}
-void timerPauseDuration() {
-  AudioPlayer s = sounds[0][4];  
-  int stanzaDuration = s.length();
-  if (millis()>millis()-startTime + stanzaDuration + PAUSE_DURATION) {
-    isInPause = false;
-    s.play();
-  }
-}
