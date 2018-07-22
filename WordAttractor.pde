@@ -1,7 +1,7 @@
 class WordAttractor {
 
   float force_radious = 100;
-  float maxForce = 15;
+  float maxForce = 16;
   RPoint position;
   RPoint[]points;
 
@@ -13,19 +13,15 @@ class WordAttractor {
   void attract() {
 
     for (int i =0; i < points.length; i++) {
-      //for (int j =0; j < points[i].length; j++) {
-        float d= points[i].dist(position);
-        // println ("d : "+d);
-        if (d < force_radious) {   
-          RPoint desired = new RPoint(points[i]);
-          //points[i]= new RPoint(points[i]);
-          //println( "avant x : "+ points[i].x +" y: "+points[i].y);
-          desired.sub(position);
-          desired.normalize();
-          desired.scale(map(d, 0, force_radious, maxForce, 0));
-          points[i].add(desired);
-          //println( "après x : "+ points[i].x +" y: "+points[i].y);
-       // }
+      float d= points[i].dist(position);
+      if (d < force_radious) {   
+        RPoint desired = new RPoint(points[i]);
+        //println( "avant x : "+ points[i].x +" y: "+points[i].y);
+        desired.sub(position);
+        desired.normalize();
+        desired.scale(map(d, 0, force_radious, maxForce, 0));
+        points[i].add(desired);
+        //println( "après x : "+ points[i].x +" y: "+points[i].y);
       }
     }
   }
